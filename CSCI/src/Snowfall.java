@@ -10,9 +10,9 @@ public class Snowfall {
             }
 
             //begin algorithm
-            int seuil=snow[n]/2;
+            double seuil=snow[n]/2.0;
             for (int i = 3; i < n; i++) {
-                if(snow[i]-snow[i-3]>seuil){
+                if(snow[i]-snow[i-3]>=seuil){
                     System.out.println("YES");
                     return;
                 }
