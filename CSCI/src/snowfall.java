@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-public class snowfall {
+public class Snowfall {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
