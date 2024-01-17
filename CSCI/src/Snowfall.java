@@ -1,5 +1,7 @@
 import java.util.Scanner;
-
+/*
+Baptiste Guilbery
+ */
 public class Snowfall {
         public static void main(String[] args) {
             Scanner sc=new Scanner(System.in);
@@ -14,7 +16,7 @@ public class Snowfall {
 
             for (int i = 3; i <= n; i++) {
 
-                if(snow[i]-snow[i-3]>seuil){
+                if(snow[i]-snow[i-3]>seuil){//check if during the 3 day period the snowfall is superior to half of the total snowfall
                     System.out.println("YES");
                     return;
                 }
