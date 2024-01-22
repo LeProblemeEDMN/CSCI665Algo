@@ -21,7 +21,7 @@ public class Matches {
 
         //if the matching is complete add it to the stable matches list
         if(idA>=n){
-            System.out.println(Arrays.toString(Arrays.copyOf(parent,n)));
+            //System.out.println(Arrays.toString(Arrays.copyOf(parent,n)));
             matches.add(parent);
             return;
         }
