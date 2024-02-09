@@ -71,7 +71,7 @@ public class Flood {
         }
         System.out.println("SAFE");
         System.out.println(maxW);
-        System.err.println(System.currentTimeMillis()-begin);
+        //System.err.println(System.currentTimeMillis()-begin);
     }
     public static void insert_value(int[] values,int nbC,int v){
         //insert a integer in a sorted array
