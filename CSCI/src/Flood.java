@@ -52,7 +52,7 @@ public class Flood {
                     System.out.println("FLOOD");
                     System.out.println(time);
                     System.out.println(water);
-                    System.err.println(System.currentTimeMillis()-begin);
+                    //System.err.println(System.currentTimeMillis()-begin);
                     return;
                 }
 
