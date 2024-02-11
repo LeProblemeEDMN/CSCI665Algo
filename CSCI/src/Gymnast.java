@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Gymnast {
 
-    public static int mergeSort(double[] array){
+    public static long mergeSort(double[] array){
         //end condition
         if(array.length<=1){
             return 0;
@@ -15,15 +15,15 @@ public class Gymnast {
         for (int i = 0; i < mid; i++) {
             a1[i]=array[i];
         }
-        int inv1=mergeSort(a1);
+        long inv1=mergeSort(a1);
 
         double[] a2=new double[array.length-mid];
         for (int i = mid; i < array.length; i++) {
             a2[i-mid]=array[i];
         }
-        int inv2=mergeSort(a2);
+        long inv2=mergeSort(a2);
         int i1=0,i2=0;
-        int nbInv=0;
+        long nbInv=0;
 
         //merge
         while (i1<a1.length && i2<a2.length){
