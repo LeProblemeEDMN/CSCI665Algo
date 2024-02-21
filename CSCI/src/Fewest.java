@@ -57,7 +57,6 @@ public class Fewest {
             partialSum+=count[n-1-nb];
             nb++;
         }
-        System.out.println("");
         System.out.println(nb);
     }
 }
