@@ -18,6 +18,7 @@ public class Flood {
             size[i]=sc.nextInt();
         }
 
+
         long begin=System.currentTimeMillis();
         int water=0;//water at any time
         int pointer=0;//id of the next crack that will open
@@ -52,7 +53,7 @@ public class Flood {
                     System.out.println("FLOOD");
                     System.out.println(time);
                     System.out.println(water);
-                    //System.err.println(System.currentTimeMillis()-begin);
+                    System.err.println(System.currentTimeMillis()-begin);
                     return;
                 }
 
@@ -71,7 +72,8 @@ public class Flood {
         }
         System.out.println("SAFE");
         System.out.println(maxW);
-        //System.err.println(System.currentTimeMillis()-begin);
+        System.err.println(System.currentTimeMillis()-begin);
+        System.out.println((System.currentTimeMillis()-begin)/(n*Math.log(n)/Math.log(2)));
     }
     public static void insert_value(int[] values,int nbC,int v){
         //insert a integer in a sorted array

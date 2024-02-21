@@ -51,7 +51,7 @@ public class Matches {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         int n=  sc.nextInt();
-        askerPref=new int[n][n];
+        /*askerPref=new int[n][n];
         answerPref=new int[n][n];
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++)
@@ -59,9 +59,18 @@ public class Matches {
 
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++)
-                answerPref[i][j]=sc.nextInt();
+                answerPref[i][j]=sc.nextInt();*/
+        //n=  8;
+        askerPref=new int[n][n];
+        answerPref=new int[n][n];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                askerPref[i][j] = (i+j)%n;
 
-
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                answerPref[i][j]=(i+j+5)%n;
+        long time=System.currentTimeMillis();
         //compute the reverse order the case (i,j) contains the order of the j element for i preferences.
         rev_askerPref=new int[n][n];
         rev_answerPref=new int[n][n];
@@ -92,11 +101,13 @@ public class Matches {
                 }
                 if(test){
                     System.out.println("YES");
+                    System.out.println(System.currentTimeMillis()-time);
                     return;
                 }
             }
         }
         System.out.println("NO");
+        System.out.println(System.currentTimeMillis()-time);
     }
 
 }

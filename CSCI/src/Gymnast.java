@@ -55,12 +55,17 @@ public class Gymnast {
         Scanner sc = new Scanner(System.in);
 
         //input reading
-        int n = sc.nextInt()/2;
+        //int n = sc.nextInt()/2;
+        int n=50000000;
         int[] order= new int[2*n];
-        for (int i = 0; i < order.length; i++) {
+       /* for (int i = 0; i < order.length; i++) {
             order[i]=sc.nextInt();
+        }*/
+        for (int i = 0; i < n; i++) {
+            order[i]=i;
+            order[i+n]=i;
         }
-        //long time=System.currentTimeMillis();
+        long time=System.currentTimeMillis();
         //compute the orde rin which the gymnast need to be to make the minimum of somersault.
         double[] values=new double[2*n];
         {
@@ -81,6 +86,7 @@ public class Gymnast {
         }
         //now that we know the order we use emrge sort to compute hte number of somersault.
         System.out.println(mergeSort(values));
+        System.err.println(System.currentTimeMillis()-time);
 
 
     }

@@ -40,11 +40,18 @@ public class SpacedPoints {
         Scanner sc = new Scanner(System.in);
 
         //input reading
-        int n = sc.nextInt();
+        /*int n = sc.nextInt();
         int[][] points=new int[n][2];
         for (int i = 0; i < n; i++) {
             points[i][0]=sc.nextInt();
             points[i][1]=sc.nextInt();
+        }*/
+
+        int n = 10000000;
+        int[][] points=new int[n][2];
+        for (int i = 0; i < n; i++) {
+            points[i][0]=i;
+            points[i][1]=i;
         }
 
         long begin=System.currentTimeMillis();
@@ -105,7 +112,7 @@ public class SpacedPoints {
             max=Math.max(max,l);
         }
         System.out.println(max);
-        //System.err.println(System.currentTimeMillis()-begin);
+        System.err.println(System.currentTimeMillis()-begin);
     }
 }
 
