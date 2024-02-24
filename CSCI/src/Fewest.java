@@ -43,7 +43,7 @@ public class Fewest {
 
         int[] count=new int[n];
         for (int i = 0; i < n; i++) {
-            //count[i]=sc.nextInt();
+            count[i]=sc.nextInt();
 
         }
 
