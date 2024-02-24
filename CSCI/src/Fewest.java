@@ -1,62 +1,97 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Fewest {
-    public static int[] radixSort(int[] array,int maxExp){
-        //radix sort implementation
-        int power=1;
-        //loop over each digit
-        for (int p = 1; p <= maxExp; p++) {
-            int oldpower=power;
-            power=10*power;
-            int[] count=new int[10];
-            //count the number of digit in the array
-            for (int i = 0; i < array.length; i++) {
-                int digit=array[i]%power/oldpower;
-                count[digit]++;
-            }
+    public static int k_select(int[] array,int begin,int end,int k){
+        //split the array in two parts
+        int pivotIndex = split(array, begin, end);
 
-            int[] placeIn=new int[10];
-            for (int i = 1; i < 10; i++) {
-                placeIn[i]=placeIn[i-1]+count[i-1];
-            }
-            //create a new array
-            int[] newArray=new int[array.length];
-            //insert the number in the position depending of the digit
-            for (int i = 0; i < array.length; i++) {
-                int digit=array[i]%power/oldpower;
-                newArray[placeIn[digit]]=array[i];
+        //if pivot is at inex k it is the wanted value
+        if (pivotIndex == k) {
+            return array[pivotIndex];
 
-                placeIn[digit]++;
-            }
-            array=newArray;
+        //otcherwise we need to redo this on the other half of the array.
+        } else if (pivotIndex < k) {
+            return k_select(array, pivotIndex + 1, end, k);
+        } else {
+            return k_select(array, begin, pivotIndex - 1, k);
         }
-        return array;
+    }
+
+    private static int split(int[] array, int begin, int end) {
+        //split the array into two half
+        int pivot = array[end];
+        int i = begin - 1;
+        for (int j = begin; j < end; j++) {
+            if (array[j] < pivot) {
+                i++;
+                int c=array[i];
+                array[i]=array[j];
+                array[j]=c;
+            }
+        }
+        int c=array[i + 1];
+        array[i + 1]=array[end];
+        array[end]=c;
+        return i + 1;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n=sc.nextInt();
         int obj=sc.nextInt();
+
+
         int[] count=new int[n];
         for (int i = 0; i < n; i++) {
-            count[i]=sc.nextInt();
+            //count[i]=sc.nextInt();
+
         }
-        int max=0;
+
+
         int sum=0;
+        int min=9999999,max=-9999999;
         for (int i = 0; i < n; i++) {
             sum+=count[i];
+            min=Math.min(min,count[i]);
             max=Math.max(max,count[i]);
         }
-        max=(int)Math.ceil(Math.log10(max));
-        count=radixSort(count,max);
-        int nb=0;
-        int partialSum=0;
 
-        while (partialSum<=obj){
-            partialSum+=count[n-1-nb];
-            nb++;
+        int begin=0;int end=n-1;
+        int number=0;
+        //we end teh algorithm if all the number in the array are the same or if there is only one number
+        while (min!=max && begin<end){
+
+            int k=(end-begin)/2+begin;
+            //k select
+            k_select(count,begin,end,k);
+            int partial_sum=0;
+            for (int i = begin; i < k; i++) {
+                partial_sum+=count[i];
+            }
+            //we will now work on only one half of the array
+            if(sum-partial_sum>obj){
+                begin=k;
+            }else{
+                number+=end-k+1;
+                end=k-1;
+                obj-=sum-partial_sum;
+            }
+
+            sum=0;
+            min=9999999;max=-9999999;
+            for (int i = begin; i <= end; i++) {
+                sum+=count[i];
+                min=Math.min(min,count[i]);
+                max=Math.max(max,count[i]);
+            }
         }
-        System.out.println(nb);
+        //add the final number needed.
+        if(begin+1>=end) {
+            number++;
+        }else{
+            int nb=count[begin];
+            number+=obj/nb+1;
+        }
+        System.out.println(number);
     }
 }

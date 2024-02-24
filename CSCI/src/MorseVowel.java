@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class MorseVowel {
@@ -10,10 +11,11 @@ public class MorseVowel {
     private static boolean[] Y={false,true,false,false};
 
     public static boolean match(boolean[] word,boolean[] letter,int begining){
+        //check if the letter match the sentence
         boolean match=true;
         for (int i = 0; i < letter.length; i++) {
 
-            match=match & !(word[begining+i] ^ letter[i]);
+            match=match & word[begining + i] == letter[i];
         }
         return match;
     }
@@ -23,39 +25,20 @@ public class MorseVowel {
 
         //input reading
         int n = sc.nextInt();
-
         String s=sc.next();
         boolean[] point=new boolean[n];
         for (int i = 0; i < n; i++) {
-            if(s.charAt(i)=='.')point[i]=true;
+           if(s.charAt(i)=='.')point[i]=true;
         }
+        //array initialisation
         int[]counts=new int[4];
         for (int i = 0; i < 4; i++) {
             counts[i]=1;
         }
-        //i=0
-        /*if(match(point,E,0))counts[3]=1;
-        //i=1
-        if(match(point,E,1))counts[2]=counts[3];
-        if(match(point,A,0))counts[2]+=1;
-        if(match(point,I,0))counts[2]+=1;
 
-        //i=2
-        if(match(point,E,2))counts[1]=counts[2];
-        if(match(point,A,1))counts[1]+=counts[3];
-        if(match(point,I,1))counts[1]+=counts[3];
-        if(match(point,O,0))counts[1]+=1;
-        if(match(point,U,0))counts[1]+=1;
-
-        //i=3
-        if(match(point,E,3))counts[0]=counts[1];
-        if(match(point,A,2))counts[0]+=counts[2];
-        if(match(point,I,2))counts[0]+=counts[2];
-        if(match(point,O,1))counts[0]+=counts[3];
-        if(match(point,U,1))counts[0]+=counts[3];
-        if(match(point,Y,0))counts[1]+=1;*/
         for (int i = 0; i < n; i++) {
             int nv=0;
+            //reccurence relation
             if(match(point,E,i))nv+=counts[0];
             if(i>0 && match(point,A,i-1))nv+=counts[1];
             if(i>0 && match(point,I,i-1))nv+=counts[1];
@@ -68,5 +51,6 @@ public class MorseVowel {
             counts[0]=nv;
         }
         System.out.println(counts[0]);
+
     }
 }
