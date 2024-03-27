@@ -24,7 +24,7 @@ public class Sub {
 
    public static void main(String[]args) throws FileNotFoundException {
        Scanner sc = new Scanner(System.in);
-       sc = new Scanner(new FileReader(new File("res/input-1.txt")));
+       //sc = new Scanner(new FileReader(new File("res/input-1.txt")));
        int n = sc.nextInt();
 
        List<int[]>jobsA=new ArrayList<>();
@@ -37,7 +37,7 @@ public class Sub {
            jobsA.add(new int[]{b,e,c});
 
        }
-      
+
        //sort the job by increasing finishing time
        Comparator<int[]>comp=new Comparator<int[]>() {
            @Override
