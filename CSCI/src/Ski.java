@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Ski {
     public static int[][] radixSort(int[][] array,int idDim,int maxExp){
@@ -43,16 +40,24 @@ public class Ski {
         int[][][] array=new int[m][n][4];
         int[][] sort_array=new int[m*n][4];
         int max_h=0;
+        //Random RDM=new Random();
+        int min_h=0;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 array[i][j][2]=sc.nextInt();
                 array[i][j][0]=i;
                 array[i][j][1]=j;
                 max_h= Math.max(max_h,array[i][j][2]);
+                min_h=Math.min(min_h,array[i][j][2]);
                 sort_array[i+j*m]=array[i][j];
             }
         }
-        sort_array=radixSort(sort_array,2,(int)Math.ceil(Math.log10(max_h)));
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                array[i][j][2]-=min_h;
+
+        //long time=System.currentTimeMillis();
+        sort_array=radixSort(sort_array,2,(int)Math.ceil(Math.log10(max_h-min_h)));
 
         int maxLength=0;
         for (int i = 0; i < m*n; i++) {
@@ -71,5 +76,6 @@ public class Ski {
             }
         }
         System.out.println(maxLength);
+       // System.out.println(System.currentTimeMillis()-time);
     }
 }
