@@ -9,11 +9,7 @@ public class Palindrome {
         String empty=sc.nextLine();
         String line=sc.nextLine();
         int[][] array = new int[n][n];
-
-        for (int i = 0; i < n; i++) {
-            array[i][i] = 0;
-        }
-
+        
         for (int i = 2; i <= n; i++) {
             for (int j = 0; j <= n - i; j++) {
                 int k = j + i - 1;
