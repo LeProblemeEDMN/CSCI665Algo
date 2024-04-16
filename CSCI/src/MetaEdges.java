@@ -15,7 +15,6 @@ public class MetaEdges {
     public static void main(String[] args){
         Scanner sc =new Scanner(System.in);
         n=sc.nextInt();
-
         edges=new List[n];
         List<Integer> nodes=new ArrayList<>();
         List<Integer>[] reversed_edges=new List[n];
@@ -24,9 +23,13 @@ public class MetaEdges {
             nodes.add(i);
             edges[i]=new ArrayList<>();
             reversed_edges[i]=new ArrayList<>();
-
-
+            int neigh=sc.nextInt();
+            while (neigh>=0){
+                edges[i].add(neigh);
+                neigh=sc.nextInt();
+            }
         }
+
 
         boolean[]visited=new boolean[n];
         int[] finishTime=new int[n];
