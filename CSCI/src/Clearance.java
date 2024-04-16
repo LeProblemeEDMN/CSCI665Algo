@@ -58,7 +58,7 @@ public class Clearance {
             for (int j = 0; j < n; j++) {
                 if(clearances[j]==i && !included[j]){
                     System.out.println("-1");
-                   // return;
+                    return;
                 }
             }
 

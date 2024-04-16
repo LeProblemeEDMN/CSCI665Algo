@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class MetaEdges {
     static List<Integer>[] edges;
@@ -18,18 +15,17 @@ public class MetaEdges {
     public static void main(String[] args){
         Scanner sc =new Scanner(System.in);
         n=sc.nextInt();
+
         edges=new List[n];
         List<Integer> nodes=new ArrayList<>();
         List<Integer>[] reversed_edges=new List[n];
+
         for (int i = 0; i < n; i++) {
             nodes.add(i);
             edges[i]=new ArrayList<>();
             reversed_edges[i]=new ArrayList<>();
-            int neigh=sc.nextInt();
-            while (neigh>=0){
-                edges[i].add(neigh);
-                neigh=sc.nextInt();
-            }
+
+
         }
 
         boolean[]visited=new boolean[n];
@@ -70,9 +66,8 @@ public class MetaEdges {
             }
         }
 
-        //List<Integer>[] meta_edges=new List[idGroup];
         int count=0;
-        //for (int i = 0; i < idGroup; i++) meta_edges[idGroup]=new ArrayList<>();
+
         boolean[][] has_edge=new boolean[idGroup][idGroup];
         for (int u = 0; u < n; u++) {
             for (int j = 0; j < edges[u].size(); j++) {
@@ -83,7 +78,7 @@ public class MetaEdges {
                 }
             }
         }
-        System.out.println(idGroup);
         System.out.println(count);
+       // System.out.println(System.currentTimeMillis()-timer);
     }
 }
