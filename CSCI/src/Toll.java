@@ -57,9 +57,12 @@ public class Toll {
         int min= Math.min(cost[dest],cost[dest+n]);
         min=Math.min(min,cost[2*n+dest]);
 
-        System.out.println(System.currentTimeMillis()-time);
+       
 
-        if(min>=Integer.MAX_VALUE-100) System.out.println("-1");
+        if(min>=Integer.MAX_VALUE-100){
+            System.out.println("-1");
+            return;
+        }
         System.out.println(min);
 
     }
